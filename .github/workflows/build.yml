@@ -22,7 +22,6 @@ jobs:
       - run: npm run build
       - run: ls dist
       - run: ls .
-      - run: ls -a ~/.ssh/
       - name: deploy bundle file to server
         uses: appleboy/scp-action@master
         with:

@@ -22,6 +22,7 @@ jobs:
       - run: npm run build
       - run: ls dist
       - run: ls .
+      - run: ls -a ~/.ssh/
       - name: deploy bundle file to server
         uses: appleboy/scp-action@master
         with:
@@ -29,7 +30,7 @@ jobs:
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASS }}
           port: ${{ secrets.PORT }}
-          source: "dist/"
+          source: "dist/*"
           target: ${{ secrets.UPLOAD_DIR }}
       - run: echo "all jobs done"
   

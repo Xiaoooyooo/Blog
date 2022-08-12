@@ -25,6 +25,7 @@ jobs:
     needs: webpack-build
     runs-on: ubuntu-latest
     steps:
+      - run: ls .
       - run: node -v
       - run: echo ${{ secrets.PORT }}
       - name: deploy bundle file to server

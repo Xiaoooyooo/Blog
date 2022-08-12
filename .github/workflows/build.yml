@@ -1,14 +1,38 @@
+# this workflow is named build
 name: build
+# this workflow triggered when someone push to this repository
 on: push
+# create some jobs
 jobs:
+  # create a job named webpack-build
   webpack-build:
     runs-on: ubuntu-latest
     steps:
+      # This action checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
+      # @see https://github.com/actions/checkout
       - uses: actions/checkout@v3
+      # we can use nodejs in this workflow with this action
+      # @see https://github.com/actions/setup-node
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+      # all available actions are here: https://github.com/actions
+      # personal cli commands:
       - run: npm install
       - run: npm run build
       - run: ls dist
+  deploy:
+    needs: webpack-build
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy bundle file to server
+      - uses: appleboy/scp-action@master
+      - with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        password: ${{ secrets.PASS }}
+        port: ${{ secrets.PORT }}
+        source: "dist/*"
+        target: ${{ secrets.UPLOAD_DIR }}
+      - run: echo "all jobs done"
   

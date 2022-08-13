@@ -10,7 +10,7 @@ jobs:
         id: hello
         uses: ./.github/actions/hello-world-action
         with:
-          message: "Hello, this is a message."
+          message: 'Hello, this is a message.'
       - name: get output
         run: echo "The time was ${{ steps.hello.outputs.time }}"
           

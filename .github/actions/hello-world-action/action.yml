@@ -1,0 +1,12 @@
+name: "hello world"
+description: "This is a test action"
+inputs:
+  message:
+    description: "this is a message"
+    required: true
+outputs:
+  time:
+    description: "the time when run this action"
+runs:
+  using: "node16"
+  main: "index.js"

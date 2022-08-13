@@ -1,0 +1,16 @@
+name: "test my own action"
+on: [push]
+jobs:
+  own-action-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: my action
+        id: hello
+        uses: ./.github/actions/hello-world-action
+          with:
+            message: "Hello, this is a message."
+      - name: get output
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
+          

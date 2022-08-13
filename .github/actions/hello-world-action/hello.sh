@@ -1,5 +1,3 @@
-#!/bin/bash
-
 echo The message is:
 echo ${{ inputs.message }}
 

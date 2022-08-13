@@ -7,6 +7,9 @@ inputs:
 outputs:
   time:
     description: "the time when run this action"
+    value: ${{ steps.hello.outputs.time }}
 runs:
-  using: "node16"
-  main: "index.js"
+  using: "composite"
+  steps:
+    - id: hello
+      run: hello.sh

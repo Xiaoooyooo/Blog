@@ -1,5 +1,4 @@
-echo The message is:
-echo ${{ inputs.message }}
+echo The message is: ${{ inputs.message }}
 
 time=`date`;
 echo ::set-output name=time::$time

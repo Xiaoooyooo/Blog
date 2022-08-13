@@ -12,5 +12,5 @@ runs:
   using: "composite"
   steps:
     - id: hello
-      run: ./hello.sh
+      run: ${{ github.action_path }}/hello.sh
       shell: bash

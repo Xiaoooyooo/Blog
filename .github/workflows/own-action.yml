@@ -9,8 +9,8 @@ jobs:
       - name: my action
         id: hello
         uses: ./.github/actions/hello-world-action
-          with:
-            message: "Hello, this is a message."
+        with:
+          message: "Hello, this is a message."
       - name: get output
         run: echo "The time was ${{ steps.hello.outputs.time }}"
           

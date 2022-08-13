@@ -13,3 +13,4 @@ runs:
   steps:
     - id: hello
       run: hello.sh
+      shell: bash

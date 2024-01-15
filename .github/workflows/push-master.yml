@@ -1,0 +1,12 @@
+name: "push master action test"
+
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo date
+        run: echo $(date)
